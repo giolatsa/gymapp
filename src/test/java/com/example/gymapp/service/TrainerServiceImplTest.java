@@ -44,7 +44,7 @@ class TrainerServiceImplTest {
 
         when(userDao.selectAll()).thenReturn(Arrays.asList());
 
-        trainerService.createTrainer(trainer);
+        trainerService.create(trainer);
 
         assertNotNull(user.getUsername());
         assertNotNull(user.getPassword());
@@ -57,7 +57,7 @@ class TrainerServiceImplTest {
         Trainer trainer = new Trainer();
         when(trainerDao.select(1L)).thenReturn(trainer);
 
-        Trainer fetchedTrainer = trainerService.getTrainer(1L);
+        Trainer fetchedTrainer = trainerService.get(1L);
         assertNotNull(fetchedTrainer);
         verify(trainerDao, times(1)).select(1L);
     }
@@ -68,7 +68,7 @@ class TrainerServiceImplTest {
         Trainer trainer2 = new Trainer();
         when(trainerDao.selectAll()).thenReturn(Arrays.asList(trainer1, trainer2));
 
-        List<Trainer> trainers = trainerService.getAllTrainers();
+        List<Trainer> trainers = trainerService.getAll();
         assertEquals(2, trainers.size());
         verify(trainerDao, times(1)).selectAll();
     }

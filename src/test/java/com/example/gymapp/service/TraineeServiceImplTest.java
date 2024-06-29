@@ -44,7 +44,7 @@ class TraineeServiceImplTest {
 
         when(userDao.selectAll()).thenReturn(Arrays.asList());
 
-        traineeService.createTrainee(trainee);
+        traineeService.create(trainee);
 
         assertNotNull(user.getUsername());
         assertNotNull(user.getPassword());
@@ -57,7 +57,7 @@ class TraineeServiceImplTest {
         Trainee trainee = new Trainee();
         when(traineeDao.select(1L)).thenReturn(trainee);
 
-        Trainee fetchedTrainee = traineeService.getTrainee(1L);
+        Trainee fetchedTrainee = traineeService.get(1L);
         assertNotNull(fetchedTrainee);
         verify(traineeDao, times(1)).select(1L);
     }
@@ -68,7 +68,7 @@ class TraineeServiceImplTest {
         Trainee trainee2 = new Trainee();
         when(traineeDao.selectAll()).thenReturn(Arrays.asList(trainee1, trainee2));
 
-        List<Trainee> trainees = traineeService.getAllTrainees();
+        List<Trainee> trainees = traineeService.getAll();
         assertEquals(2, trainees.size());
         verify(traineeDao, times(1)).selectAll();
     }

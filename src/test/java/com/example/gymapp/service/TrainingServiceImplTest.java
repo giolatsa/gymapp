@@ -47,7 +47,7 @@ class TrainingServiceImplTest {
         training.setTrainee(trainee);
         training.setTrainer(trainer);
 
-        trainingService.createTraining(training);
+        trainingService.create(training);
 
         verify(trainingDao, times(1)).create(training);
     }
@@ -57,7 +57,7 @@ class TrainingServiceImplTest {
         Training training = new Training();
         when(trainingDao.select(1L)).thenReturn(training);
 
-        Training fetchedTraining = trainingService.getTraining(1L);
+        Training fetchedTraining = trainingService.get(1L);
         assertNotNull(fetchedTraining);
         verify(trainingDao, times(1)).select(1L);
     }
@@ -68,7 +68,7 @@ class TrainingServiceImplTest {
         Training training2 = new Training();
         when(trainingDao.selectAll()).thenReturn(Arrays.asList(training1, training2));
 
-        List<Training> trainings = trainingService.getAllTrainings();
+        List<Training> trainings = trainingService.getAll();
         assertEquals(2, trainings.size());
         verify(trainingDao, times(1)).selectAll();
     }

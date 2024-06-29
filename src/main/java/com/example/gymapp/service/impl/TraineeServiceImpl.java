@@ -24,7 +24,7 @@ public class TraineeServiceImpl implements TraineeService {
     }
 
     @Override
-    public void createTrainee(Trainee trainee) {
+    public void create(Trainee trainee) {
         List<User> users = userDao.selectAll();
         List<String> existingUsernames = users.stream().map(User::getUsername).toList();
 
@@ -37,17 +37,17 @@ public class TraineeServiceImpl implements TraineeService {
     }
 
     @Override
-    public void updateTrainee(Trainee trainee) {
+    public void update(Trainee trainee) {
         traineeDao.update(trainee);
     }
 
     @Override
-    public Trainee getTrainee(Long id) {
+    public Trainee get(Long id) {
         return traineeDao.select(id);
     }
 
     @Override
-    public List<Trainee> getAllTrainees() {
+    public List<Trainee> getAll() {
         return traineeDao.selectAll();
     }
 }

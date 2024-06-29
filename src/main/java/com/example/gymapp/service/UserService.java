@@ -4,9 +4,6 @@ import com.example.gymapp.model.User;
 
 import java.util.List;
 
-public interface UserService {
-    void createUser(User user);
-    void updateUser(User user);
-    User getUser(Long id);
-    List<User> getAllUsers();
+public interface UserService extends BaseService<User>{
+
 }

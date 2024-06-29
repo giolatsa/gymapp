@@ -23,7 +23,7 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public void createTrainer(Trainer trainer) {
+    public void create(Trainer trainer) {
         List<User> users = userDao.selectAll();
         List<String> existingUsernames = users.stream().map(User::getUsername).toList();
 
@@ -36,18 +36,18 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public void updateTrainer(Trainer trainer) {
+    public void update(Trainer trainer) {
         trainerDao.update(trainer);
     }
 
     @Override
-    public Trainer getTrainer(Long id) {
+    public Trainer get(Long id) {
         return trainerDao.select(id);
     }
 
 
     @Override
-    public List<Trainer> getAllTrainers() {
+    public List<Trainer> getAll() {
         return trainerDao.selectAll();
     }
 

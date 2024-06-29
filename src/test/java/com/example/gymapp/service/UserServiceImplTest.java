@@ -34,7 +34,7 @@ class UserServiceImplTest {
         user.setFirstName("John");
         user.setLastName("Doe");
 
-        userService.createUser(user);
+        userService.create(user);
 
         verify(userDao, times(1)).create(user);
     }
@@ -45,9 +45,9 @@ class UserServiceImplTest {
         user.setFirstName("John");
         user.setLastName("Doe");
 
-        userService.createUser(user);
+        userService.create(user);
         user.setLastName("Smith");
-        userService.updateUser(user);
+        userService.update(user);
 
         verify(userDao, times(1)).update(user);
     }
@@ -57,7 +57,7 @@ class UserServiceImplTest {
         User user = new User();
         when(userDao.select(1L)).thenReturn(user);
 
-        User fetchedUser = userService.getUser(1L);
+        User fetchedUser = userService.get(1L);
         assertNotNull(fetchedUser);
         verify(userDao, times(1)).select(1L);
     }
@@ -68,7 +68,7 @@ class UserServiceImplTest {
         User user2 = new User();
         when(userDao.selectAll()).thenReturn(Arrays.asList(user1, user2));
 
-        List<User> users = userService.getAllUsers();
+        List<User> users = userService.getAll();
         assertEquals(2, users.size());
         verify(userDao, times(1)).selectAll();
     }

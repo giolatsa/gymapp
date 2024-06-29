@@ -3,11 +3,14 @@ package com.example.gymapp;
 
 import com.example.gymapp.config.AppConfig;
 import com.example.gymapp.controller.TrainingFacade;
+import com.example.gymapp.model.Trainee;
+import com.example.gymapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +32,7 @@ public class GymappApplication {
     public static void main(String[] args) {
 
 
+
         LOGGER.log(Level.INFO, "Application started");
 
         // Initialize Spring context
@@ -42,6 +46,17 @@ public class GymappApplication {
         LOGGER.log(Level.INFO, "Trainees: {0}", facade.getAllTrainees().size());
         LOGGER.log(Level.INFO, "Trainers: {0}", facade.getAllTrainers().size());
 
+        //Create new trainee
+        User user = new User();
+        user.setFirstName("John");
+        user.setLastName("Doe");
+        user.setIsActive(true);
+
+        Trainee trainee = new Trainee();
+        trainee.setUser(user);
+        trainee.setAddress("123 Main St");
+        trainee.setDateOfBirth(new Date());
+        LOGGER.log(Level.INFO, "Created Trainee: {0}", facade.createTrainee(trainee));
 
         LOGGER.log(Level.INFO, "Application stopped");
     }

@@ -4,8 +4,6 @@ import com.example.gymapp.model.Training;
 
 import java.util.List;
 
-public interface TrainingService {
-    void createTraining(Training training);
-    Training getTraining(Long id);
-    List<Training> getAllTrainings();
+public interface TrainingService extends BaseService<Training> {
+
 }

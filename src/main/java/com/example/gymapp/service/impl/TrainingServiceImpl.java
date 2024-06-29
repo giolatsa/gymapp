@@ -19,17 +19,21 @@ public class TrainingServiceImpl implements TrainingService {
     }
 
     @Override
-    public void createTraining(Training training) {
+    public void create(Training training) {
         trainingDao.create(training);
+    }
+    @Override
+    public void update(Training entity) {
+        trainingDao.update(entity);
     }
 
     @Override
-    public Training getTraining(Long id) {
+    public Training get(Long id) {
         return trainingDao.select(id);
     }
 
     @Override
-    public List<Training> getAllTrainings() {
+    public List<Training> getAll() {
         return trainingDao.selectAll();
     }
 }

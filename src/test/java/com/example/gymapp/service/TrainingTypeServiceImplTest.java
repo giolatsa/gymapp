@@ -33,7 +33,7 @@ class TrainingTypeServiceImplTest {
         TrainingType trainingType = new TrainingType();
         trainingType.setTrainingTypeName("Yoga");
 
-        trainingTypeService.createTrainingType(trainingType);
+        trainingTypeService.create(trainingType);
 
         verify(trainingTypeDao, times(1)).create(trainingType);
     }
@@ -43,7 +43,7 @@ class TrainingTypeServiceImplTest {
         TrainingType trainingType = new TrainingType();
         when(trainingTypeDao.select(1L)).thenReturn(trainingType);
 
-        TrainingType fetchedTrainingType = trainingTypeService.getTrainingType(1L);
+        TrainingType fetchedTrainingType = trainingTypeService.get(1L);
         assertNotNull(fetchedTrainingType);
         verify(trainingTypeDao, times(1)).select(1L);
     }
@@ -54,7 +54,7 @@ class TrainingTypeServiceImplTest {
         TrainingType trainingType2 = new TrainingType();
         when(trainingTypeDao.selectAll()).thenReturn(Arrays.asList(trainingType1, trainingType2));
 
-        List<TrainingType> trainingTypes = trainingTypeService.getAllTrainingTypes();
+        List<TrainingType> trainingTypes = trainingTypeService.getAll();
         assertEquals(2, trainingTypes.size());
         verify(trainingTypeDao, times(1)).selectAll();
     }
