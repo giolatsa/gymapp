@@ -28,65 +28,65 @@ public class TrainingFacade {
     }
 
     public User getUserById(Long id) {
-        return userService.getUser(id);
+        return userService.get(id);
     }
 
     public void createUser(User user) {
-        userService.createUser(user);
+        userService.create(user);
     }
 
     public void updateUser(User user) {
-        userService.updateUser(user);
+        userService.update(user);
     }
 
     public List<User> getAllUsers() {
-        return userService.getAllUsers();
+        return userService.getAll();
     }
 
     public Trainee createTrainee(Trainee trainee) {
-        traineeService.createTrainee(trainee);
+        traineeService.create(trainee);
         return trainee;
     }
 
     public Trainee getTraineeById(Long id) {
-        return traineeService.getTrainee(id);
+        return traineeService.get(id);
     }
 
     public List<Trainee> getAllTrainees() {
-        return traineeService.getAllTrainees();
+        return traineeService.getAll();
     }
 
     public void updateTrainee(Trainee trainee) {
-        traineeService.updateTrainee(trainee);
+        traineeService.update(trainee);
     }
 
 
     public void createTraining(Training training) {
-        trainingService.createTraining(training);
+        trainingService.create(training);
     }
 
     public Training getTrainingById(Long id) {
-        return trainingService.getTraining(id);
+        return trainingService.get(id);
     }
 
     public List<Training> getAllTrainings() {
-        return trainingService.getAllTrainings();
+        return trainingService.getAll();
     }
 
     public void createTrainer(Trainer trainer) {
-        trainerService.createTrainer(trainer);
+        trainerService.create(trainer);
     }
 
     public Trainer getTrainerById(Long id) {
-        return trainerService.getTrainer(id);
+        return trainerService.get(id);
     }
 
     public List<Trainer> getAllTrainers() {
-        return trainerService.getAllTrainers();
+        return trainerService.getAll();
     }
 
     public void updateTrainer(Trainer trainer) {
-        trainerService.updateTrainer(trainer);
+        trainerService.update(trainer);
     }
 
 }
