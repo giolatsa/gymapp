@@ -47,4 +47,10 @@ public class TrainingTypeDaoImpl implements TrainingTypeDao {
         LOGGER.log(Level.INFO, "Selected all training types: {0}", trainingTypes.size());
         return trainingTypes;
     }
+
+    @Override
+    public void update(TrainingType trainingType) {
+        inMemoryStorage.getNamespace(NAMESPACE).put(trainingType.getId(), trainingType);
+        LOGGER.log(Level.INFO, "Updated training type: {0}", trainingType);
+    }
 }

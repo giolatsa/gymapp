@@ -8,4 +8,5 @@ public interface TrainingDao {
     void create(Training training);
     Training select(Long id);
     List<Training> selectAll();
+    void update(Training training);
 }

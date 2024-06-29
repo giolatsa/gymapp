@@ -51,4 +51,11 @@ public class TrainingDaoImpl implements TrainingDao {
         LOGGER.log(Level.INFO, "Selected all trainings: {0}", trainings.size());
         return trainings;
     }
+
+    @Override
+    public void update(Training training) {
+        inMemoryStorage.getNamespace(NAMESPACE).put(training.getId(), training);
+        LOGGER.log(Level.INFO, "Updated training: {0}", training);
+
+    }
 }
