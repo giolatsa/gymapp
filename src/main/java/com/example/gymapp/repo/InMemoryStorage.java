@@ -66,12 +66,14 @@ public class InMemoryStorage {
                         trainee.setDateOfBirth(new Date(Long.parseLong(line[2])));
                         trainee.setAddress(line[3]);
                         getNamespace("trainees").put(trainee.getId(), trainee);
+                        LOGGER.log(Level.INFO, "Loaded trainee: {0}", trainee);
                     }
                     case "trainer" -> {
                         Trainer trainer = new Trainer();
                         trainer.setId(Long.parseLong(line[1]));
                         trainer.setSpecialization(line[2]);
                         getNamespace("trainers").put(trainer.getId(), trainer);
+                        LOGGER.log(Level.INFO, "Loaded trainer: {0}", trainer);
                     }
                     case "training" -> {
                         Training training = new Training();
@@ -83,12 +85,14 @@ public class InMemoryStorage {
                         training.setTrainee((Trainee) getNamespace("trainees").get(Long.parseLong(line[6])));
                         training.setTrainer((Trainer) getNamespace("trainers").get(Long.parseLong(line[7])));
                         getNamespace("trainings").put(training.getId(), training);
+                        LOGGER.log(Level.INFO, "Loaded training: {0}", training);
                     }
                     case "trainingType" -> {
                         TrainingType trainingType = new TrainingType();
                         trainingType.setId(Long.parseLong(line[1]));
                         trainingType.setTrainingTypeName(line[2]);
                         getNamespace("trainingTypes").put(trainingType.getId(), trainingType);
+                        LOGGER.log(Level.INFO, "Loaded training type: {0}", trainingType);
                     }
                     default -> LOGGER.log(Level.WARNING, "Unknown type: {0}", type);
                 }
